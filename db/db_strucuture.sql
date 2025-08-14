@@ -1,0 +1,24 @@
+USE sports_database;
+
+CREATE TABLE city (
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    city_name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE sport (
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    sport_name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE team (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    team_name VARCHAR(100) NOT NULL,
+    points INT NOT NULL,
+    city_id INT NOT NULL,
+    sport_id INT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (city_id) REFERENCES city(id),
+    FOREIGN KEY (sport_id) REFERENCES sport(id)
+);
+
