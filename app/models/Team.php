@@ -43,7 +43,7 @@ class Team {
 
     // CRUD
     public function getAll() {
-        $query = "SELECT * FROM {$this->table}";
+        $query = "SELECT t.*, c.city_name AS city_name, s.sport_name AS sport_name FROM {$this->table} t JOIN city c ON t.city_id = c.id JOIN sport s ON t.sport_id = s.id";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;

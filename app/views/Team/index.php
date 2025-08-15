@@ -23,8 +23,8 @@
         <tr>
             <td><?= $row["team_name"] ?></td>
             <td><?= $row["points"] ?></td>
-            <td><?= $row["city_id"] ?></td>
-            <td><?= $row["sport_id"] ?></td>
+            <td><?= $row["city_name"] ?></td>
+            <td><?= $row["sport_name"] ?></td>
             <td><a href="index.php?action=show&id=<?= $row['id'] ?>" class="btn btn-primary mb-3">Ver</a>            </td>
             
         </tr>
