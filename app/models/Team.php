@@ -25,10 +25,6 @@ class Team {
     public function getUpdatedAt() { return $this->updated_at; }
 
     // Setters
-    public function setId($id) {
-        $this->id = (int)$id;
-    }
-
     public function setTeamName($name) {
         $this->team_name = htmlspecialchars(strip_tags(trim($name)));
     }
@@ -51,5 +47,18 @@ class Team {
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
-    }   
+    }
+
+    public function create() {
+        $query = "INSERT INTO {$this->table} (team_name, points, city_id, sport_id) VALUES (:team_name, :points, :city_id, :sport_id)";
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindValue(":team_name", $this->team_name);
+        $stmt->bindValue(":points", $this->points, PDO::PARAM_INT);
+        $stmt->bindValue(":city_id", $this->city_id, PDO::PARAM_INT);
+        $stmt->bindValue(":sport_id", $this->sport_id, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
+    
 }

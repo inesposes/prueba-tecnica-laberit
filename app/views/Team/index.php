@@ -9,19 +9,18 @@
 <h1>Teams</h1>
 
 <table class="table table-bordered">
+    <a href="index.php?action=create" class="btn btn-primary mb-3">Añadir equipo</a>
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Team name</th>
-            <th>Points</th>
-            <th>City ID</th>
-            <th>Sport ID</th>
+            <th>Nombre</th>
+            <th>Puntos</th>
+            <th>Ciudad</th>
+            <th>Deporte</th>
         </tr>
     </thead>
     <tbody>
         <?php while($row = $teams->fetch(PDO::FETCH_ASSOC)): ?>
         <tr>
-            <td><?= $row["id"] ?></td>
             <td><?= $row["team_name"] ?></td>
             <td><?= $row["points"] ?></td>
             <td><?= $row["city_id"] ?></td>

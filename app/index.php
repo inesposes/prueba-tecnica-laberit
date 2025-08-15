@@ -5,5 +5,18 @@ require_once 'controllers/TeamController.php';
 
 $db = new Database();
 
-$team_controller = new TeamController($db);
-$team_controller->index(); 
+$database = new Database();
+
+$controller = new TeamController($db);
+
+$action = $_GET['action'] ?? 'index';
+$id = $_GET['id'] ?? null;
+
+switch($action) {
+    case 'create':
+        $controller->create();
+        break;
+    default:
+        $controller->index();
+        break;
+}
