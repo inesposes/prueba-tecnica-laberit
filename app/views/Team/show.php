@@ -10,10 +10,10 @@
     <h1 class="mb-3">Detalles del Equipo</h1>
 
     <?php if ($equipo): ?>
-        <p><strong>Nombre:</strong> <?= $equipo['team_name'] ?></p>
-        <p><strong>Puntos:</strong> <?= $equipo['points'] ?></p>
-        <p><strong>Ciudad:</strong> <?= $equipo['city_name'] ?></p>
-        <p><strong>Deporte:</strong> <?= $equipo['sport_name'] ?></p>
+        <p><strong>Nombre:</strong> <?= htmlspecialchars($equipo['team_name']) ?></p>
+        <p><strong>Puntos:</strong> <?= htmlspecialchars($equipo['points']) ?></p>
+        <p><strong>Ciudad:</strong> <?= htmlspecialchars($equipo['city_name']) ?></p>
+        <p><strong>Deporte:</strong> <?= htmlspecialchars($equipo['sport_name']) ?></p>
 
     <?php else: ?>
         <p>No se encontró el equipo.</p>
