@@ -10,18 +10,18 @@
 <form method="POST">
     <div class="mb-3">
         <label class="form-label">Nombre</label>
-        <input type="text" name="team_name" class="form-control" required>
+        <input type="text" name="team_name" class="form-control" required minlength="5" maxlength="50">
     </div>
     <div class="mb-3">
         <label class="form-label">Puntos</label>
-        <input type="number" name="points" class="form-control" required>
+        <input type="number" name="points" class="form-control" required min="0" max="100">
     </div>
     <div class="mb-3">
         <label class="form-label">Ciudad</label>
         <select name="city_id" class="form-select" required>
             <option value="">Elige una ciudad</option>
             <?php foreach ($cities as $city): ?>
-                <option value="<?= htmlspecialchars($city['id']) ?>">
+                <option value="<?= $city['id'] ?>">
                     <?= htmlspecialchars($city['city_name']) ?>
                 </option>
             <?php endforeach; ?>
@@ -29,10 +29,10 @@
     </div>
     <div class="mb-3">
         <label class="form-label">Deporte</label>
-        <select name="city_id" class="form-select" required>
+        <select name="sport_id" class="form-select" required>
             <option value="">Elige un deporte</option>
             <?php foreach ($sports as $sport): ?>
-                <option value="<?= htmlspecialchars($city['id']) ?>">
+                <option value="<?= htmlspecialchars($sport['id']) ?>">
                     <?= htmlspecialchars($sport['sport_name']) ?>
                 </option>
             <?php endforeach; ?>
