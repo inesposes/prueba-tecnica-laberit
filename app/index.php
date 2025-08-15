@@ -16,6 +16,9 @@ switch($action) {
     case 'create':
         $controller->create();
         break;
+    case 'show':
+            $controller->show();
+            break;
     default:
         $controller->index();
         break;

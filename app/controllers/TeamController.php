@@ -28,5 +28,18 @@ class TeamController {
         include "views/Team/create.php";
     }
 
+    public function show() {
+        if (!isset($_GET['id'])) {
+            die("No se proporcionó un ID válido.");
+        } 
+    
+        $id = $_GET['id']; 
+    
+        $team = new Team($this->db);      
+        $equipo = $team->getOne($id);       
+    
+        include "views/Team/show.php";    
+    }
+
     
 }

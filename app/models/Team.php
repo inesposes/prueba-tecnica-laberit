@@ -49,6 +49,14 @@ class Team {
         return $stmt;
     }
 
+    public function getOne($id) {
+        $query = "SELECT * FROM {$this->table} WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function create() {
         $query = "INSERT INTO {$this->table} (team_name, points, city_id, sport_id) VALUES (:team_name, :points, :city_id, :sport_id)";
         $stmt = $this->conn->prepare($query);
