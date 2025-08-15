@@ -1,5 +1,8 @@
 <?php
 require_once "models/Team.php";
+require_once "models/City.php";
+require_once "models/Sport.php";
+
 
 class TeamController {
     private $db;
@@ -11,10 +14,18 @@ class TeamController {
     public function index() {
         $team = new Team($this->db);
         $teams = $team->getAll();
+   
+
         include "views/Team/index.php";
     }
 
     public function create() {
+        $city = new City($this->db);  
+        $cities = $city->getAll();
+
+        $sport = new Sport($this->db);  
+        $sports = $sport->getAll();
+
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $team = new Team($this->db); 
             $team->setTeamName($_POST["team_name"]);
