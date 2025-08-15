@@ -27,9 +27,22 @@ class Database {
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         } catch(PDOException $e) {
-            die("Error de conexión: " . $e->getMessage());
+            die("Connection error" . $e->getMessage());
         }
 
         return $this->conn;
+    }
+
+    public function prepare($sql)
+    {
+        if (!$this->conn) {
+            $this->connect();
+        }
+
+        try {
+            return $this->conn->prepare($sql);
+        } catch (PDOException $e) {
+            die("Error preparing query " . $e->getMessage());
+        }
     }
 }
