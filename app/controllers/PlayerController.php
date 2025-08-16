@@ -28,7 +28,8 @@ class PlayerController {
             $playingNumber = $_POST["playing_number"] ?? null;
             $characteristics   = trim($_POST["characteristics"] ?? "");
             $teamId = $_POST["team_id"] ?? null;
-            
+            $isCaptain = $_POST["is_captain"] ?? null;
+
             if ($playerName === "") {
                 $errors[] = "El nombre del jugador es obligatorio.";
             }
@@ -54,8 +55,13 @@ class PlayerController {
             $player->setPlayerName($playerName );
             $player->setPlayingNumber($playingNumber);
             $player->setCharacteristics ($characteristics);
-            $player->setTeamId($_POST["team_id"]);
-            $player->create();
+            $player->setTeamId($teamId);
+            $playerId=$player->create();
+
+            if ($isCaptain) {
+                $team->updateCaptain($teamId, $this->db->lastInsertId());
+            }
+            
             header("Location: index.php");
             return;
         }
@@ -87,7 +93,8 @@ class PlayerController {
             $playingNumber   = $_POST["playing_number"] ?? null;
             $characteristics = trim($_POST["characteristics"] ?? "");
             $teamId          = $_POST["team_id"] ?? null;
-    
+            $isCaptain = $_POST["is_captain"] ?? null;
+
             if ($playerName === "") {
                 $errors[] = "El nombre del jugador es obligatorio.";
             }
@@ -110,8 +117,13 @@ class PlayerController {
                 $player->setCharacteristics($characteristics);
                 $player->setTeamId($teamId);
                 $player->update($id);
+
+                if ($isCaptain) {
+                    $team->updateCaptain($teamId, $playerInfo['id']);
+                }
     
-                header("Location: index.php?controller=team&action=show&id=" . $player->team_id);
+    
+                header("Location: index.php?controller=team&action=show&id=" . $teamId);
                 return;
             }
     

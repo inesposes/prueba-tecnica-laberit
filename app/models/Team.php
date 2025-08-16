@@ -8,6 +8,7 @@ class Team {
     private $points;
     private $city_id;
     private $sport_id;
+    private $captain_id;
     private $created_at;
     private $updated_at;
 
@@ -21,6 +22,7 @@ class Team {
     public function getPoints() { return $this->points; }
     public function getCityId() { return $this->city_id; }
     public function getSportId() { return $this->sport_id; }
+    public function getCaptainId() { return $this->captain_id; }
     public function getCreatedAt() { return $this->created_at; }
     public function getUpdatedAt() { return $this->updated_at; }
 
@@ -39,6 +41,10 @@ class Team {
 
     public function setSportId($sport_id) {
         $this->sport_id = (int)$sport_id;
+    }
+
+    public function setCaptainId($captain_id) {
+        $this->captain_id = (int)$captain_id;
     }
 
     // CRUD
@@ -74,6 +80,16 @@ class Team {
         $stmt->bindValue(":city_id", $this->city_id, PDO::PARAM_INT);
         $stmt->bindValue(":sport_id", $this->sport_id, PDO::PARAM_INT);
 
+        return $stmt->execute();
+    }
+
+    public function updateCaptain($team_id, $captain_id) {
+        $query = "UPDATE {$this->table} SET captain_id = :captain_id WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+    
+        $stmt->bindParam(":captain_id", $captain_id, PDO::PARAM_INT);
+        $stmt->bindParam(":id", $team_id, PDO::PARAM_INT);
+    
         return $stmt->execute();
     }
     

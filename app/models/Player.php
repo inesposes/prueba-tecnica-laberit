@@ -23,6 +23,7 @@ class Player {
     public function getTeamId() { return $this->team_id; }
     public function getCreatedAt() { return $this->created_at; }
     public function getUpdatedAt() { return $this->updated_at; }
+    public function getConnection() { return $this->conn;}
 
     // Setters
     public function setPlayerName($name) {
@@ -66,7 +67,7 @@ class Player {
         $stmt->bindValue(":playing_number", $this->playing_number, PDO::PARAM_INT);
         $stmt->bindValue(":characteristics", $this->characteristics);
         $stmt->bindValue(":team_id", $this->team_id, PDO::PARAM_INT);
-
+        
         return $stmt->execute();
     }
 

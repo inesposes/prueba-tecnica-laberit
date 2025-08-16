@@ -36,6 +36,14 @@
             <?php endforeach; ?>
         </select>
     </div>
+
+    <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" name="is_captain" id="is_captain" value="1">
+        <label class="form-check-label" for="is_captain">
+            Seleccionar como capitán de equipo
+        </label>
+    </div>
+
     <button class="btn btn-success">Guardar</button>
 </form>
 
