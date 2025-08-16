@@ -27,16 +27,16 @@
     </div>
     <div class="mb-3">
         <label class="form-label">Equipo</label>
-        <select name="sport_id" class="form-select" required>
-            <option value="">Elige un deporte</option>
+        <select name="team_id" class="form-select" required>
+            <option value="">Elige un equipo</option>
             <?php foreach ($teams as $team): ?>
                 <option value="<?= htmlspecialchars($team['id']) ?>">
-                    <?= htmlspecialchars($team['sport_name']) ?>
+                    <?= htmlspecialchars($team['team_name']) ?>
                 </option>
             <?php endforeach; ?>
         </select>
     </div>
-    <button class="btn btn-success">Save</button>
+    <button class="btn btn-success">Guardar</button>
 </form>
 
 <?php if (!empty($errors)): ?>

@@ -3,7 +3,7 @@ require_once "models/Player.php";
 require_once "models/Team.php";
 
 
-class PlayerControllers {
+class PlayerController {
     private $db;
 
     public function __construct($db) {
@@ -26,7 +26,7 @@ class PlayerControllers {
             
             $playerName = trim($_POST["player_name"] ?? "");
             $playingNumber = $_POST["playing_number"] ?? null;
-            $characteristics   = trim($_POST["characteristiccs"] ?? "")
+            $characteristics   = trim($_POST["characteristics"] ?? "");
             $teamId = $_POST["team_id"] ?? null;
             
             if ($playerName === "") {
@@ -41,11 +41,10 @@ class PlayerControllers {
                 $errors[] = "Las características son obligatorias";
             }
     
-            if ($teamId=== null || !filter_var($            if ($teamId=== null || !filter_var($teamId, FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]])) {
-                , FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]])) {
+            if ($teamId === null || !filter_var($teamId, FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]])) {
                 $errors[] = "El ID del equipo debe ser válido.";
             }
-    
+
             if (!empty($errors)) {
                 require "views/Player/create.php";
                 return;
