@@ -2,6 +2,7 @@
 require_once 'db/Database.php';
 require_once 'models/Team.php';
 require_once 'controllers/TeamController.php';
+require_once 'controllers/PlayerController.php';
 
 $db = new Database();
 
