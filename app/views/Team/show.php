@@ -41,7 +41,7 @@
                 <td><?= $row["characteristics"] ?></td>
                 <td>
                     <a href="index.php?controller=player&action=update&id=<?= $row['id'] ?>" class="btn btn-primary mb-3">Editar</a>            
-                    <a href="index.php?controller=player&action=delete&id=<?= $row['id'] ?>" class="btn btn-danger mb-3">Eliminar</a>
+                    <a href="index.php?controller=player&action=delete&id=<?= $row['id'] ?>" class="btn btn-danger mb-3" onclick="return confirm('¿Estás seguro/a de que quieres eliminar este/a jugador/a?');">Eliminar</a>
                 </td>
                 
             </tr>

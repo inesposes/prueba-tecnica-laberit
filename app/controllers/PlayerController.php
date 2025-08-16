@@ -111,7 +111,7 @@ class PlayerController {
                 $player->setTeamId($teamId);
                 $player->update($id);
     
-                header("Location: index.php");
+                header("Location: index.php?controller=team&action=show&id=" . $player->team_id);
                 return;
             }
     
@@ -125,6 +125,21 @@ class PlayerController {
         }
     
         include "views/Player/update.php";
+    }
+
+    public function delete() {
+        if (!isset($_GET['id'])) {
+            die("No se proporcionó un ID válido.");
+        } 
+    
+        $id = $_GET['id']; 
+        
+        $player = new Player($this->db);
+
+        $player->delete($id);
+
+        header("Location: index.php?controller=team&action=show&id=" . 2);
+
     }
 
     
