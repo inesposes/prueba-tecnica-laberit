@@ -49,6 +49,14 @@ class Team {
         return $stmt;
     }
 
+    public function getPlayers($id) {
+        $query = "SELECT * FROM player WHERE team_id = :id ";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        return $stmt;
+    }
+
     public function getOne($id) {
         $query = "SELECT t.*, c.city_name AS city_name, s.sport_name AS sport_name FROM {$this->table} t JOIN city c ON t.city_id = c.id JOIN sport s ON t.sport_id = s.id WHERE t.id = :id ";
         $stmt = $this->conn->prepare($query);

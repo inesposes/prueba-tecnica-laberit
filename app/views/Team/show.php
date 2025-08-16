@@ -18,5 +18,35 @@
     <?php else: ?>
         <p>No se encontró el equipo.</p>
     <?php endif; ?>
+
+    <hr>
+
+    <h2>Jugadores</h2>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Número</th>
+                <th>Características</th>
+                <th>Acciones</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <?php while($row = $players->fetch(PDO::FETCH_ASSOC)): ?>
+            <tr>
+                <td><?= $row["player_name"] ?></td>
+                <td><?= $row["playing_number"] ?></td>
+                <td><?= $row["characteristics"] ?></td>
+                <td>
+                    <a href="index.php?controller=team&action=show&id=<?= $row['id'] ?>" class="btn btn-primary mb-3">Editar</a>            
+                    <a href="index.php?controller=team&action=show&id=<?= $row['id'] ?>" class="btn btn-danger mb-3">Eliminar</a>
+                </td>
+                
+            </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
 </body>
 </html>

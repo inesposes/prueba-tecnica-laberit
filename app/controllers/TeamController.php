@@ -76,7 +76,8 @@ class TeamController {
         $id = $_GET['id']; 
     
         $team = new Team($this->db);      
-        $equipo = $team->getOne($id);       
+        $equipo = $team->getOne($id);
+        $players = $team->getPlayers($id);
     
         include "views/Team/show.php";    
     }
