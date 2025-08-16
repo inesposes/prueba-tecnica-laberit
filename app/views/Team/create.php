@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Create Team</title>
+    <title>Crear equipo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="container mt-4">
@@ -41,5 +41,15 @@
     <button class="btn btn-success">Save</button>
 </form>
 
+<?php if (!empty($errors)): ?>
+    <div class="text-danger mt-4">
+        <p>Errores:</p>
+        <ul>
+            <?php foreach ($errors as $error): ?>
+                <li><?= htmlspecialchars($error) ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
 </body>
 </html>
