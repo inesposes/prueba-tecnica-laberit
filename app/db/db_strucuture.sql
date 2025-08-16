@@ -16,6 +16,7 @@ CREATE TABLE team (
     points INT NOT NULL,
     city_id INT NOT NULL,
     sport_id INT NOT NULL,
+    captain_id INT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (city_id) REFERENCES city(id),
@@ -32,3 +33,9 @@ CREATE TABLE player (
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (team_id) REFERENCES team(id)
 );
+
+ALTER TABLE team
+ADD CONSTRAINT fk_team_captain
+FOREIGN KEY (captain_id) REFERENCES player(id);
+
+
