@@ -9,17 +9,14 @@ $database = new Database();
 
 $controller = new TeamController($db);
 
+
+$controller = $_GET['controller'] ?? 'team';
+$controllerName = ucfirst($controller) . 'Controller';
+$controllerClass = new $controllerName($db);
 $action = $_GET['action'] ?? 'index';
 $id = $_GET['id'] ?? null;
 
-switch($action) {
-    case 'create':
-        $controller->create();
-        break;
-    case 'show':
-            $controller->show();
-            break;
-    default:
-        $controller->index();
-        break;
-}
+
+$controllerClass->$action();
+
+
