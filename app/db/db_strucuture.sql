@@ -22,3 +22,13 @@ CREATE TABLE team (
     FOREIGN KEY (sport_id) REFERENCES sport(id)
 );
 
+CREATE TABLE player (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    player_name VARCHAR(100) NOT NULL,
+    playing_number INT NOT NULL,
+    characteristics TEXT NOT NULL,
+    team_id INT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (team_id) REFERENCES team(id)
+);
