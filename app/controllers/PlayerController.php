@@ -62,14 +62,21 @@ class PlayerController {
         include "views/Player/create.php";
     }
 
-    public function update($id) {
+    public function update() {
+
+        if (!isset($_GET['id'])) {
+            die("No se proporcionó un ID válido.");
+        } 
+    
+        $id = $_GET['id']; 
+
         $team = new Team($this->db);  
         $teams = $team->getAll();
     
         $player = new Player($this->db);
-        $playerInfo = $player->getById($id);
+        $playerInfo = $player->getOne($id);
         
-        if (!$playerInfo) {
+        if (!$player) {
             header("Location: index.php");
             return;
         }
@@ -98,12 +105,11 @@ class PlayerController {
             }
     
             if (empty($errors)) {
-                $player->setId($id);
                 $player->setPlayerName($playerName);
                 $player->setPlayingNumber($playingNumber);
                 $player->setCharacteristics($characteristics);
-                $player->setSportId($teamId);
-                $player->update();
+                $player->setTeamId($teamId);
+                $player->update($id);
     
                 header("Location: index.php");
                 return;

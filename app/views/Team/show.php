@@ -40,8 +40,8 @@
                 <td><?= $row["playing_number"] ?></td>
                 <td><?= $row["characteristics"] ?></td>
                 <td>
-                    <a href="index.php?controller=team&action=show&id=<?= $row['id'] ?>" class="btn btn-primary mb-3">Editar</a>            
-                    <a href="index.php?controller=team&action=show&id=<?= $row['id'] ?>" class="btn btn-danger mb-3">Eliminar</a>
+                    <a href="index.php?controller=player&action=update&id=<?= $row['id'] ?>" class="btn btn-primary mb-3">Editar</a>            
+                    <a href="index.php?controller=player&action=delete&id=<?= $row['id'] ?>" class="btn btn-danger mb-3">Eliminar</a>
                 </td>
                 
             </tr>

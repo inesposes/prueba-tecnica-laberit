@@ -49,6 +49,14 @@ class Player {
         return $stmt;
     }
 
+    public function getOne($id) {
+        $query = "SELECT * FROM {$this->table} WHERE id = :id ";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
 
     public function create() {
         $query = "INSERT INTO {$this->table} (player_name, playing_number, characteristics, team_id) VALUES (:player_name, :playing_number, :characteristics, :team_id)";
@@ -62,7 +70,7 @@ class Player {
         return $stmt->execute();
     }
 
-    public function update() {
+    public function update($id) {
         $query = "UPDATE {$this->table} SET player_name = :player_name, playing_number = :playing_number, characteristics = :characteristics, team_id = :team_id WHERE id = :id";
     
         $stmt = $this->conn->prepare($query);
@@ -70,6 +78,8 @@ class Player {
         $stmt->bindValue(":playing_number", $this->playing_number, PDO::PARAM_INT);
         $stmt->bindValue(":characteristics", $this->characteristics);
         $stmt->bindValue(":team_id", $this->team_id, PDO::PARAM_INT);
+        $stmt->bindValue(":id", $id);
+
     
         return $stmt->execute();
     }
