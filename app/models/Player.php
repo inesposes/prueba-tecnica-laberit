@@ -44,7 +44,7 @@ class Player {
 
     // CRUD
     public function getAll() {
-        $query = "SELECT p.*, t.team_name AS team_name FROM {$this->table} p JOIN team t ON p.team_id = t.id";
+        $query = "SELECT p.*, t.team_name AS team_name FROM {$this->table} p JOIN team t ON p.team_id = t.id ORDER BY created_at DESC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
