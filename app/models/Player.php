@@ -95,5 +95,14 @@ class Player {
         return $stmt->execute();
     }
     
+
+    public function getByNumber($playing_number, $team_id) {
+        $query = "SELECT * FROM {$this->table} WHERE playing_number = :playing_number  AND team_id = :team_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":playing_number", $playing_number);
+        $stmt->bindParam(":team_id", $team_id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
     
 }

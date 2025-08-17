@@ -46,12 +46,20 @@ class PlayerController {
                 $errors[] = "El ID del equipo debe ser válido.";
             }
 
+            $player = new Player($this->db); 
+            $same_playing_number=$player->getByNumber($playingNumber, $teamId);
+
+            if ($same_playing_number) {
+                $errors[] = "Ya existe un jugador/a con este número";
+            }
+
             if (!empty($errors)) {
                 require "views/Player/create.php";
                 return;
             }
             
-            $player = new Player($this->db); 
+
+            
             $player->setPlayerName($playerName );
             $player->setPlayingNumber($playingNumber);
             $player->setCharacteristics ($characteristics);
