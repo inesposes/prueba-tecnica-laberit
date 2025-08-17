@@ -82,5 +82,18 @@ class TeamController {
         include "views/Team/show.php";    
     }
 
+    public function obtain_captain() {
+        $captainId = $_GET['captain_id']; 
+        $teamId = $_GET['team_id']; 
+
+        $team = new Team($this->db);
+        $captain = $team->getCaptain($captainId);
+        $teamData = $team->getOne($teamId);
+
+        include "views/Team/obtain_captain.php";    
+
+    }
+
+
     
 }

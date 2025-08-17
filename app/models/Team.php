@@ -92,5 +92,13 @@ class Team {
     
         return $stmt->execute();
     }
+
+    public function getCaptain($captain_id) {
+        $query = "SELECT * FROM player  WHERE id = :id ";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id", $captain_id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
     
 }

@@ -34,7 +34,7 @@
             <td><?= $row["sport_name"] ?></td>
             <td>
                 <a href="index.php?controller=team&action=show&id=<?= $row['id'] ?>" class="btn btn-success mb-3">+ Info</a>    
-                <a href="index.php?controller=team&action=show&id=<?= $row['id'] ?>" class="btn btn-warning mb-3">Capitán</a>         
+                <a href="index.php?controller=team&action=obtain_captain&team_id=<?= $row['id'] ?>&captain_id=<?= $row['captain_id'] ?>" class="btn btn-warning mb-3">Capitán</a>         
             </td>
             
         </tr>
