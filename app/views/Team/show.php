@@ -1,4 +1,10 @@
 
+
+<?php
+$creationDate = new DateTime(htmlspecialchars($equipo['created_at']));
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
+
 <body class="container mt-4">
     <h1 class="mb-3">Detalles del Equipo</h1>
 
@@ -14,6 +21,7 @@
         <p><strong>Puntos:</strong> <?= htmlspecialchars($equipo['points']) ?></p>
         <p><strong>Ciudad:</strong> <?= htmlspecialchars($equipo['city_name']) ?></p>
         <p><strong>Deporte:</strong> <?= htmlspecialchars($equipo['sport_name']) ?></p>
+        <p><strong>Fecha de alta:</strong> <?= $creationDate->format('d/m/Y H:i') ?></p>
 
     <?php else: ?>
         <p>No se encontró el equipo.</p>
@@ -50,3 +58,4 @@
     </table>
 </body>
 </html>
+
