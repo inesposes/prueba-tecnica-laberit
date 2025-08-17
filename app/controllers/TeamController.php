@@ -50,17 +50,24 @@ class TeamController {
             if ($sportId === null || !filter_var($sportId, FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]])) {
                 $errors[] = "El ID del deporte debe ser válido.";
             }
+
+            $team = new Team($this->db); 
+            $same_team_name=$team->getByName($teamName);
+
+            if ($same_team_name) {
+                $errors[] = "Ya existe un equipo con este nombre";
+            }
+
     
             if (!empty($errors)) {
                 require "views/Team/create.php";
                 return;
             }
             
-            $team = new Team($this->db); 
-            $team->setTeamName($_POST["team_name"]);
-            $team->setPoints($_POST["points"]);
-            $team->setCityId ($_POST["city_id"]);
-            $team->setSportId($_POST["sport_id"]);
+            $team->setTeamName($teamName);
+            $team->setPoints($points);
+            $team->setCityId ($cityId);
+            $team->setSportId($sportId);
             $team->create();
             header("Location: index.php");
             return;

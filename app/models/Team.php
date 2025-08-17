@@ -101,4 +101,12 @@ class Team {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     
+
+    public function getByName($team_name) {
+        $query = "SELECT * FROM {$this->table} WHERE team_name = :team_name";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":team_name", $team_name);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
