@@ -42,8 +42,21 @@ $creationDate = new DateTime(htmlspecialchars($equipo['created_at']));
         </thead>
         <tbody>
             <?php while($row = $players->fetch(PDO::FETCH_ASSOC)): ?>
-            <tr>
-                <td><?= $row["player_name"] ?></td>
+            <tr 
+                <?php
+                    if ($row["id"]==$equipo['captain_id']) {
+                        echo 'class="table-primary"';
+                    }
+                ?>
+            >
+                <td>
+                    <?= $row["player_name"] ?>
+                    <?php 
+                        if ($row["id"]==$equipo['captain_id']) {
+                            echo '<br> <span><b>CAPITÁN</b></span>';
+                        }
+                    ?>
+                </td>
                 <td><?= $row["playing_number"] ?></td>
                 <td><?= $row["characteristics"] ?></td>
                 <td>
