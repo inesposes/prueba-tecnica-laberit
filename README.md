@@ -1,12 +1,13 @@
 # Prueba técnica Laberit
 
-## Instalación y requisitos
+Este proyecto es una pequeña aplicación para la gestión de equipos deportivos y sus respectivos jugadores. Ha sido realizada siguiendo el modelo MVC con PHP.
 
-Sistema Operativo:
-- Linux
-- Windows: necesaria una máquina virtual, WSL o entorno que permita trabajar con Docker.
+## Requisitos
 
-Docker instalado
+- Docker y Docker Compose
+- Git
+
+## Instalación
 
 Pasos a seguir:
 
@@ -30,5 +31,13 @@ docker exec -i database mysql -u user -ppass sports_database < app/db/db_script.
 
 4. Accede a [localhost:8080](localhost:8080)
 
+¡Ya puedes probar la aplicación!
 
-## Detalles
+
+## Notas técnicas
+- El número de jugador y el nombre de equipo han de ser campos únicos en cada tabla
+- Se ha creado un modelo para ciudad (City) y deporte Sport. Por ahora cuentan solo con el método getAll(), pero se ha realizado con la idea de que la aplicación pudiese escalar en algún momento y fuese necesario hacer un CRUD de alguna de estas entidades.
+- El capitán de un equipo se añade creando/editando. Si ya había uno previo lo sobrescribe.
+
+## Mejoras
+- Añadir validaciones de integridad referencial (por ejemplo, comprobar que el id del equipo introducido en el select realmente exista).
