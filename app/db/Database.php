@@ -45,4 +45,9 @@ class Database {
             die("Error preparing query " . $e->getMessage());
         }
     }
+
+    public function lastInsertId() {
+        return $this->conn->lastInsertId();
+    }
+    
 }

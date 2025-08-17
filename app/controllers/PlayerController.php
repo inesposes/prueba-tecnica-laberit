@@ -56,7 +56,7 @@ class PlayerController {
             $player->setPlayingNumber($playingNumber);
             $player->setCharacteristics ($characteristics);
             $player->setTeamId($teamId);
-            $playerId=$player->create();
+            $player->create();
 
             if ($isCaptain) {
                 $team->updateCaptain($teamId, $this->db->lastInsertId());
