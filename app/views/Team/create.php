@@ -38,7 +38,7 @@
             <?php endforeach; ?>
         </select>
     </div>
-    <button class="btn btn-success">Save</button>
+    <button class="btn btn-primary">Guardar</button>
 </form>
 
 <?php if (!empty($errors)): ?>

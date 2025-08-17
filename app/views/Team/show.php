@@ -14,10 +14,9 @@ $creationDate = new DateTime(htmlspecialchars($equipo['created_at']));
 </head>
 
 <body class="container mt-4">
-    <h1 class="mb-3">Detalles del Equipo</h1>
+    <h1 class="mb-3">Detalles equipo: <?= htmlspecialchars($equipo['team_name']) ?></h1>
 
     <?php if ($equipo): ?>
-        <p><strong>Nombre:</strong> <?= htmlspecialchars($equipo['team_name']) ?></p>
         <p><strong>Puntos:</strong> <?= htmlspecialchars($equipo['points']) ?></p>
         <p><strong>Ciudad:</strong> <?= htmlspecialchars($equipo['city_name']) ?></p>
         <p><strong>Deporte:</strong> <?= htmlspecialchars($equipo['sport_name']) ?></p>
