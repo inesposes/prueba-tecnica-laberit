@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Actualizar jugador</title>
+    <title>Editar jugador</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="container mt-4">
 
-<h1>Actualizar jugador</h1>
+<h1>Editar jugador</h1>
 <form method="POST">
     <div class="mb-3">
         <label class="form-label">Nombre</label>
-        <input type="text" name="player_name" class="form-control" required minlength="5" maxlength="50" value="<?= htmlspecialchars($playerInfo['player_name'] ?? '') ?>">
+        <input type="text" name="player_name" class="form-control" required minlength="3" maxlength="50" value="<?= htmlspecialchars($playerInfo['player_name'] ?? '') ?>">
     </div>
     <div class="mb-3">
         <label class="form-label">Número de jugador</label>
@@ -44,7 +44,7 @@
             Seleccionar como capitán de equipo
         </label>
     </div>
-    <button class="btn btn-success">Guardar</button>
+    <button class="btn btn-primary">Guardar</button>
 </form>
 
 <?php if (!empty($errors)): ?>
