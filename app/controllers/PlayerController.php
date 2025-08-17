@@ -62,7 +62,7 @@ class PlayerController {
                 $team->updateCaptain($teamId, $this->db->lastInsertId());
             }
             
-            header("Location: index.php");
+            header("Location: index.php?controller=team&action=show&id=" . $teamId);
             return;
         }
         include "views/Player/create.php";
@@ -147,10 +147,11 @@ class PlayerController {
         $id = $_GET['id']; 
         
         $player = new Player($this->db);
-
+        $playerData=$player->getOne($id);
+        $teamId=$playerData['team_id'];
         $player->delete($id);
 
-        header("Location: index.php?controller=team&action=show&id=" . 2);
+        header("Location: index.php?controller=team&action=show&id=" . $teamId);
 
     }
 
