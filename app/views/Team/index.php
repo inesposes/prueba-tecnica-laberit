@@ -15,7 +15,9 @@
 
 <table class="table table-bordered">
     <a href="index.php?controller=team&action=create" class="btn btn-primary mb-3">Añadir equipo</a>
-    <a href="index.php?controller=player&action=create" class="btn btn-primary mb-3 ms-2">Añadir jugador</a>
+    <?php if (!empty($teams)) {?>
+        <a href="index.php?controller=player&action=create" class="btn btn-primary mb-3 ms-2">Añadir jugador</a>
+    <?php }?>
 
     <thead>
         <tr>
