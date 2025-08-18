@@ -20,20 +20,24 @@ Pasos a seguir:
     git clone https://github.com/inesposes/prueba-tecnica-laberit.git
 ```
 
-2.  Levanta los servicios docker
+2. Crea un archivo .env con las variables de entorno que hay en .env.example
+
+> Si eres un técnico/a de selección, he proporcionado por correo electrónico los valores del .env que usé yo para el desarrollo.
+
+3.  Levanta los servicios docker
 
 ```
     cd prueba-tecnica-laberit/
     docker-compose up -d --build
 ```
 
-3. Inserta datos de prueba
+4. Inserta datos de prueba
 
 ```
 docker exec -i database mysql -u user -ppass sports_database < app/db/db_script.sql
 ```
 
-4. Accede a [localhost:8080](localhost:8080)
+5. Accede a [localhost:8080](localhost:8080)
 
 ¡Ya puedes probar la aplicación!
 
