@@ -15,7 +15,7 @@
 
 <table class="table table-bordered">
     <a href="index.php?controller=team&action=create" class="btn btn-primary mb-3">Añadir equipo</a>
-    <?php if (!empty($teams)) {?>
+    <?php if (!empty($teams->fetch(PDO::FETCH_ASSOC))) {?>
         <a href="index.php?controller=player&action=create" class="btn btn-primary mb-3 ms-2">Añadir jugador</a>
     <?php }?>
 
