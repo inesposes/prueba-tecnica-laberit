@@ -43,7 +43,7 @@ docker exec -i database mysql -u user -ppass sports_database < app/db/db_script.
 
 
 ## 📌 Notas técnicas
--Restricciones de unicidad:
+- Restricciones de unicidad:
     - El número de jugador debe ser único en la tabla de jugadores.
     - El nombre del equipo debe ser único en la tabla de equipos.
 
@@ -61,6 +61,6 @@ docker exec -i database mysql -u user -ppass sports_database < app/db/db_script.
 
 ## 💡 Posibles mejoras
 - Añadir validaciones de integridad referencial (por ejemplo, comprobar que el id del equipo introducido en el select realmente exista).
-- Añadir tests automatizados.
+- Añadir validación de que si no están las tablas creadas en base de datos salga un error.
 - Crear CRUD completo para City y Sport.
 - Mejorar la interfaz de usuario para facilitar la navegación.
